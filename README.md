@@ -1,11 +1,11 @@
-## Copyright (c) <2019>
-  <University of Illinois at Urbana-Champaign>
-  All rights reserved.
+# Copyright (c) 
+2019 University of Illinois at Urbana-Champaign 
 
-## Developed by:  
-  <ES CAD Group>
-  <University of Illinois at Urbana-Champaign>
-  <http://dchen.ece.illinois.edu/>
+All rights reserved.
+
+## Developed by: ES CAD Group
+  University of Illinois at Urbana-Champaign
+  http://dchen.ece.illinois.edu/
 
 
 ## This IP Package includes an open-source IP repository specifically designed for machine learning applications. 
@@ -37,6 +37,5 @@ Specifically, the LRCN IP was created through the following work:
 The Standard convolution, Depth-wise separable convolution, Pooling, and Bounding box regression IPs were created through the following work:
 ```
 [3] C. Hao, X. Zhang, Y. Li, S. Huang, J. Xiong, K. Rupnow, W.M. Hwu, and D. Chen, “FPGA/DNN Co-Design: An Efficient Design Methodology for IoT Intelligence on the Edge”, Proceedings of IEEE/ACM Design Automation Conference, June 2019.
-
-https://github.com/TomG008/SkyNet 
 ``` 
+https://github.com/TomG008/SkyNet 
