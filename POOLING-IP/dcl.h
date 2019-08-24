@@ -1,3 +1,6 @@
+#ifndef __DCL_H
+#define __DCL_H
+
 #include <stdio.h>
 #include <math.h>
 #include <ap_fixed.h>
@@ -36,13 +39,7 @@ typedef ap_uint<8> uint8;
 
 
 
+void maxpooling2x2(FIX_FM buf_in[DEPTH][HEIGH][WIDTH], FIX_FM buf_out[DEPTH][HEIGH/2][WIDTH/2]);
 
 
-void CONV_3x3_group(FIX_FM bottom[16][22][42],
-					FIX_FM top[16][22][42],
-					FIX_WT weight[16][3][3]);
-
-void CONV_1x1(FIX_FM bottom[16][22][42],
-			  FIX_FM top[16][22][42],
-			  FIX_WT weights[16][16]);
-
+#endif /* ifndef  */
