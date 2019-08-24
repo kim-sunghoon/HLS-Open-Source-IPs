@@ -2,10 +2,10 @@
 
 // Conv 1x1 PE
 
-#include <stdio.h>
-#include <math.h>
-#include <ap_fixed.h>
-#include "hls_stream.h"
+// #include <stdio.h>
+// #include <math.h>
+// #include <ap_fixed.h>
+// #include "hls_stream.h"
 #include "dcl.h"
 
 
@@ -73,7 +73,7 @@ FIX_32_12 compute_engine_16(FIX_WT w0,  FIX_FM b0,
 }
 
 
-void CONV_1x1(FIX_FM bottom[DEPTH][HEIGH][WIDTH],
+void conv1x1(FIX_FM bottom[DEPTH][HEIGH][WIDTH],
 			  FIX_FM top[DEPTH][HEIGH][WIDTH],
 			  FIX_WT weights[DEPTH][DEPTH])
 {
@@ -88,6 +88,7 @@ FIX_32_12 tmp[DEPTH];
 
 #pragma HLS ALLOCATION instances=compute_engine_16 limit=8 function
 
+    // load weight
 	for(int i = 0; i < DEPTH; i++)
 		for(int j = 0; j < DEPTH; j++)
 			weight_buf[i][j] = weights[i][j];
@@ -98,8 +99,8 @@ FIX_32_12 tmp[DEPTH];
 
 //			for(int co = 0; co < 16; co+=8) {
 #pragma HLS pipeline
-			for(int co = 0; co < 16; co+=16) {
-				for(int coo = 0; coo < 16; coo++) {
+			for(int co = 0; co < DEPTH; co+=DEPTH) {
+				for(int coo = 0; coo < DEPTH; coo++) {
 #pragma HLS unroll
 
 					tmp[coo] = compute_engine_16(
@@ -121,7 +122,7 @@ FIX_32_12 tmp[DEPTH];
 												 weight_buf[co+coo][15], bottom[15][h][w]);
 				}
 
-				for(int coo = 0; coo < 16; coo++)
+				for(int coo = 0; coo < DEPTH; coo++)
 #pragma HLS unroll
 					top[co+coo][h][w] += tmp[coo];
 
